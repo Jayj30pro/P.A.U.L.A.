@@ -48,12 +48,17 @@ Appointments
             <br/>
             <button onclick="addList()"> Add a new item </button>
             <button onclick="getList()"> Check the list </button>
+            <button onclick="clearScreen()"> Clear screen </button>
         </div>
         <br/><br/><br/><br/><br/>
         <script>
             let doList = ["eggs","milk","hyper","bacon"];
             let onScreen = document.getElementById("contents");
             let doIt = document.getElementById("to-do"); 
+
+            function clearScreen() {
+                onScreen.innerHTML = "";
+            }
 
             function addList() {
                 doList.push(doIt.value);
