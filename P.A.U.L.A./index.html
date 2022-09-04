@@ -21,7 +21,7 @@ Appointments
                 font-size: 40px;
             }
            #work-area {
-            height: 500px;
+            height: 300px;
             width: 80%;
             background-color: #CCC;
             
@@ -29,9 +29,9 @@ Appointments
            button {
             padding: 5px;
             margin: 10px;
-            border: 7px double #00F;
-            color: #FFF;
-            background: #706;
+            border: 7px double #076;
+            color: #000;
+            background: #0AC;
            }
         </style>
     </head>
@@ -46,25 +46,34 @@ Appointments
             <p> What needs to get done? </p>
             <input id="to-do" type="text"/>
             <br/>
-            <button> Add a new item </button>
+            <button onclick="addList()"> Add a new item </button>
             <button onclick="getList()"> Check the list </button>
         </div>
         <br/><br/><br/><br/><br/>
         <script>
             let doList = ["eggs","milk","hyper","bacon"];
             let onScreen = document.getElementById("contents");
+            let doIt = document.getElementById("to-do"); 
+
+            function addList() {
+                doList.push(doIt.value);
+                getList();
+                doIt.value = "";
+            }
             
             function getList() {
                 if (doList.length == 0) {
                     onScreen.innerHTML = "We are just getting started";
                 }
                 else {
+                    let betterString = "";
                     let dipList = [];
                     for (let i =0; i < doList.length; i++) {
                         dipList.push(doList[i]);
                         dipList.push("<br/>");
+                        betterString = dipList.join(" ");
                     }
-                    onScreen.innerHTML = dipList;
+                    onScreen.innerHTML = betterString;
                 }
             }
         </script>
