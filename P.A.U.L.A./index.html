@@ -18,7 +18,7 @@ Appointments
         <title> P.A.U.L.A. </title>
         <style>
             body {
-                background-color: #115;
+                background-color: #222;
                 color: #FFF;
             }
             header {
@@ -27,16 +27,23 @@ Appointments
            #work-area {
             height: 300px;
             width: 60%;
-            background-color: #CFF;
+            background-color: #dfdfdf;
             color: #032;
-            
+           }
+           #to-do{
+            font-size: 15px;
+           }
+           #about-app {
+            font-size: 8px;
            }
            button {
             padding: 5px;
             margin: 10px;
+            font-size: 15px;
             border: 7px double #076;
             color: #000;
             background: #0AC;
+            border-radius: 5%;
            }
         </style>
     </head>
@@ -56,6 +63,7 @@ Appointments
             <button onclick="clearScreen()"> Clear screen </button>
         </div>
         <br/><br/><br/><br/><br/>
+        <a href=""> <p align="center" id="about-app"> about paula</p></a>
         <script>
             let doList = [];
             let onScreen = document.getElementById("contents");
