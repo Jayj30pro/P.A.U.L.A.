@@ -3,8 +3,8 @@
 <!--
 Project name
 
-Public 
-Aplication
+Personal
+Aplication and
 Utility for 
 List and 
 Appointments
@@ -20,24 +20,45 @@ Appointments
             body {
                 background-color: #222;
                 color: #FFF;
+                font-family: 'Times New Roman', Times, serif;
             }
             header {
                 font-size: 40px;
             }
             a {
-                color: #CA0;
+                color: #B05;
             }
-           #work-area {
+
+            #main-window {
+                width: 100%;
+                display: flex;
+                height: auto;
+                justify-content: space-evenly;
+            }
+
+           #list-area {
             height: 300px;
-            width: 60%;
+            width: 40%;
             background-color: #dfdfdf;
             color: #032;
            }
+
+           #work-area {
+            height: 300px;
+            width: 40%;
+            background-color: #dfdfdf;
+            color: #032;
+           }
+
            #to-do{
             font-size: 15px;
            }
            #about-app {
-            font-size: 12px;
+            font-size: 16px;
+           }
+           .title{
+            font-size: 25px;
+            color: #50B;
            }
            button {
             padding: 5px;
@@ -55,8 +76,15 @@ Appointments
             <p align="center">Hi I'm Paula</p>
         </header>
         <div align="center">
-            <div id="work-area">
-                <p id="contents"> Nothing Yet </p>
+            <div id="main-window">
+                <div id="list-area">
+                    <p class="title"> To-do List</p>
+                    <p id="contents"> Nothing Yet </p>
+                </div>
+                <div id="work-area">
+                    <p class="title"> Information</p>
+                    <p id="info"> Nothing Yet </p>
+                </div>
             </div>
             <p> What needs to get done? </p>
             <input id="to-do" type="text"/>
@@ -66,8 +94,9 @@ Appointments
             <button onclick="clearScreen()"> Clear screen </button>
         </div>
         <br/><br/><br/><br/><br/>
-        <a href=""> <p align="center" id="about-app"> about P.A.U.L.A.</p></a>
+        <a href="about.html"> <p align="center" id="about-app"> about P.A.U.L.A.</p></a>
         <script>
+            
             let doList = [];
             let onScreen = document.getElementById("contents");
             let doIt = document.getElementById("to-do"); 
@@ -78,7 +107,7 @@ Appointments
 
             function addList() {
                 if (doIt.value == "") {
-                    onScreen.innerHTML = "I don't see anything";
+                    onScreen.innerHTML = "I don't see anything"; //if blank
                 }
 
                 else {
@@ -88,6 +117,8 @@ Appointments
                 }
             }
             
+            //display current list items if empty display an encouraging message
+
             function getList() {
                 if (doList.length == 0) {
                     onScreen.innerHTML = "We are just getting started";
