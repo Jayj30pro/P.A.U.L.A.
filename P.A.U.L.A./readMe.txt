@@ -4,3 +4,8 @@ PAULA is a web based virtual assistant
 The source code will remain available for all future versions.
 
 
+
+Version 1 
+    released 4 September 2022.
+
+
