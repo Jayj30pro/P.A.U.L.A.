@@ -27,7 +27,9 @@ Appointments
             }
             a {
                 color: #B05;
+                font-size: 20px;
             }
+
 
             #main-window {
                 width: 100%;
@@ -43,19 +45,11 @@ Appointments
             color: #032;
            }
 
-           #work-area {
-            height: 300px;
-            width: 40%;
-            background-color: #dfdfdf;
-            color: #032;
-           }
-
+           
            #to-do{
             font-size: 15px;
            }
-           #about-app {
-            font-size: 16px;
-           }
+           
            .title{
             font-size: 25px;
             color: #50B;
@@ -73,17 +67,13 @@ Appointments
     </head>
     <body>
         <header>
-            <p align="center">Hi I'm Paula</p>
+            <p align="center" id="message">Hi I'm Paula</p>
         </header>
         <div align="center">
             <div id="main-window">
                 <div id="list-area">
                     <p class="title"> To-do List</p>
                     <p id="contents"> Nothing Yet </p>
-                </div>
-                <div id="work-area">
-                    <p class="title"> Information</p>
-                    <p id="info"> Nothing Yet </p>
                 </div>
             </div>
             <p> What needs to get done? </p>
@@ -92,22 +82,37 @@ Appointments
             <button onclick="addList()"> Add a new item </button>
             <button onclick="getList()"> Check the list </button>
             <button onclick="clearScreen()"> Clear screen </button>
+            <br/>
+            <a href="https://www.google.com/search?q=weather+colorado+springs&oq=weather+colorado+springs&aqs=chrome..69i57.4313j0j7&sourceid=chrome&ie=UTF-8" target="_blank"><button> Weather </button></a>
+            <button onclick="stocks()"> Stocks </button>
         </div>
         <br/><br/><br/><br/><br/>
-        <a href="about.html"> <p align="center" id="about-app"> about P.A.U.L.A.</p></a>
+        <div id="links" align="center">
+            <a href="about.html" id="about-app"> About P.A.U.L.A.</a>&emsp;&emsp;&emsp;
+            <a id="back" href="../projects.html" align="right"> Back to Projects </a>
+        </div>
         <script>
             
             let doList = [];
             let onScreen = document.getElementById("contents");
-            let doIt = document.getElementById("to-do"); 
+            let doIt = document.getElementById("to-do");
+            let speak = document.getElementById("message");
 
             function clearScreen() {
                 onScreen.innerHTML = "";
             }
 
+            function stocks() {
+                onScreen.innerHTML = "Buy low and sell high";
+            }
+
+            function emptyInput() {
+                onScreen.innerHTML = "I don't see anything";  //retrun if empty 
+            }
+
             function addList() {
                 if (doIt.value == "") {
-                    onScreen.innerHTML = "I don't see anything"; //if blank
+                    emptyInput(); //if blank
                 }
 
                 else {
