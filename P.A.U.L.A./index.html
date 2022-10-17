@@ -13,9 +13,13 @@ Appointments
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> P.A.U.L.A. </title>
+        <link rel="icon" href="../Icons/onusbs-man6.png" type="image/png">
         <style>
             body {
                 background-color: #222;
@@ -30,12 +34,16 @@ Appointments
                 font-size: 20px;
             }
 
-
             #main-window {
                 width: 100%;
                 display: flex;
                 height: auto;
                 justify-content: space-evenly;
+            }
+
+            #about2 {
+                transform: translate(25%, 0%);
+                text-align: left;
             }
 
            #list-area {
@@ -62,6 +70,13 @@ Appointments
             color: #000;
             background: #0AC;
             border-radius: 5%;
+            cursor: pointer;
+           }
+           @media (max-width: 1000px) {
+                #about2 {
+                    transform: translate(0%, 0%);
+                    text-align: center;
+                }
            }
         </style>
     </head>
@@ -69,41 +84,43 @@ Appointments
         <header>
             <p align="center" id="message">Hi I'm Paula</p>
         </header>
-        <div align="center">
+        <div align="center" id="main-container">
             <div id="main-window">
                 <div id="list-area">
-                    <p class="title"> To-do List</p>
+                    <p class="title"> To-do List </p>
                     <p id="contents"> Nothing Yet </p>
                 </div>
             </div>
-            <p> What needs to get done? </p>
+            <p> How can I help? </p>
             <input id="to-do" type="text"/>
             <br/><br/>
             <button onclick="addList()"> Add a new item </button>
             <button onclick="getList()"> Check the list </button>
             <button onclick="clearScreen()"> Clear screen </button>
             <br/>
-            <a href="https://www.google.com/search?q=weather+colorado+springs&oq=weather+colorado+springs&aqs=chrome..69i57.4313j0j7&sourceid=chrome&ie=UTF-8" target="_blank"><button> Weather </button></a>
-            <button onclick="stocks()"> Stocks </button>
+            <a href="https://weather.com" target="_blank"><button> Weather </button></a>
+            <a href="https://finance.yahoo.com/" target="_blank"><button> Stocks </button></a>
         </div>
-        <br/><br/><br/><br/><br/>
+        <br/><br/>
         <div id="links" align="center">
-            <a href="about.html" id="about-app"> About P.A.U.L.A.</a>&emsp;&emsp;&emsp;
-            
+            <button onclick="aboutInfo()" id="about-app"> About P.A.U.L.A. </button>&emsp;&emsp;&emsp;
+            <a href="../projects.html" align="right" id="back"><button> Back to Projects </button></a>
         </div>
+        <br/><br/><br/><br/>
+ 
         <script>
             
             let doList = [];
             let onScreen = document.getElementById("contents");
             let doIt = document.getElementById("to-do");
             let speak = document.getElementById("message");
+            let infoCount = 0;
 
             function clearScreen() {
+                let btnTxt = document.getElementById("about-app");
                 onScreen.innerHTML = "";
-            }
-
-            function stocks() {
-                onScreen.innerHTML = "Buy low and sell high";
+                infoCount = 0;
+                btnTxt.innerHTML = " About P.A.U.L.A. ";
             }
 
             function emptyInput() {
@@ -119,6 +136,25 @@ Appointments
                     doList.push(doIt.value);
                     getList();
                     doIt.value = "";
+                }
+            }
+                //************** about info ********************
+            function aboutInfo() {
+                let btnTxt = document.getElementById("about-app");
+                if (infoCount == 0){
+                    onScreen.innerHTML = "Paula is a web-based assistant who can list and assist with various tasks on the internet. Paula will use several online libraries and resources to optimize her functionality as a web-based app.";
+                    infoCount = 1;
+                    btnTxt.innerHTML = " More About P.A.U.L.A. ";
+                }
+                else if (infoCount == 1){
+                    onScreen.innerHTML = "<p id='about2'> PAULA is a: <br/>&emsp;&emsp;&emsp;Personal <br/>&emsp;&emsp;&emsp;Application and <br/>&emsp;&emsp;&emsp;Utility for <br/>&emsp;&emsp;&emsp;Lists and <br/>&emsp;&emsp;&emsp;Appointments</p>";
+                    infoCount = 2;
+                    btnTxt.innerHTML = " Done ";
+                }
+                else {
+                    onScreen.innerHTML = "What needs to get done?";
+                    infoCount = 0;
+                    btnTxt.innerHTML = " About P.A.U.L.A. ";
                 }
             }
             
