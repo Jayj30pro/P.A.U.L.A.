@@ -1,0 +1,180 @@
+<!--P.A.U.L.A.-->
+
+<!--
+Project name
+
+Personal
+Aplication and
+Utility for 
+List and 
+Appointments
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> P.A.U.L.A. </title>
+        <link rel="icon" href="../Icons/onusbs-man6.png" type="image/png">
+        <style>
+            body {
+                background-color: #222;
+                color: #FFF;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            header {
+                font-size: 40px;
+            }
+            a {
+                color: #B05;
+                font-size: 20px;
+            }
+
+            #main-window {
+                width: 100%;
+                display: flex;
+                height: auto;
+                justify-content: space-evenly;
+            }
+
+            #about2 {
+                transform: translate(25%, 0%);
+                text-align: left;
+            }
+
+           #list-area {
+            height: 300px;
+            width: 40%;
+            background-color: #dfdfdf;
+            color: #032;
+           }
+
+           
+           #to-do{
+            font-size: 15px;
+           }
+           
+           .title{
+            font-size: 25px;
+            color: #50B;
+           }
+           button {
+            padding: 5px;
+            margin: 10px;
+            font-size: 15px;
+            border: 7px double #076;
+            color: #000;
+            background: #0AC;
+            border-radius: 5%;
+            cursor: pointer;
+           }
+           @media (max-width: 1000px) {
+                #about2 {
+                    transform: translate(0%, 0%);
+                    text-align: center;
+                }
+           }
+        </style>
+    </head>
+    <body>
+        <header>
+            <p align="center" id="message">Hi I'm Paula</p>
+        </header>
+        <div align="center" id="main-container">
+            <div id="main-window">
+                <div id="list-area">
+                    <p class="title"> To-do List </p>
+                    <p id="contents"> Nothing Yet </p>
+                </div>
+            </div>
+            <p> How can I help? </p>
+            <input id="to-do" type="text"/>
+            <br/><br/>
+            <button onclick="addList()"> Add a new item </button>
+            <button onclick="getList()"> Check the list </button>
+            <button onclick="clearScreen()"> Clear screen </button>
+            <br/>
+            <a href="https://weather.com" target="_blank"><button> Weather </button></a>
+            <a href="https://finance.yahoo.com/" target="_blank"><button> Stocks </button></a>
+        </div>
+        <br/><br/>
+        <div id="links" align="center">
+            <button onclick="aboutInfo()" id="about-app"> About P.A.U.L.A. </button>&emsp;&emsp;&emsp;
+            <a href="../projects.html" align="right" id="back"><button> Back to Projects </button></a>
+        </div>
+        <br/><br/><br/><br/>
+ 
+        <script>
+            
+            let doList = [];
+            let onScreen = document.getElementById("contents");
+            let doIt = document.getElementById("to-do");
+            let speak = document.getElementById("message");
+            let infoCount = 0;
+
+            function clearScreen() {
+                let btnTxt = document.getElementById("about-app");
+                onScreen.innerHTML = "";
+                infoCount = 0;
+                btnTxt.innerHTML = " About P.A.U.L.A. ";
+            }
+
+            function emptyInput() {
+                onScreen.innerHTML = "I don't see anything";  //retrun if empty 
+            }
+
+            function addList() {
+                if (doIt.value == "") {
+                    emptyInput(); //if blank
+                }
+
+                else {
+                    doList.push(doIt.value);
+                    getList();
+                    doIt.value = "";
+                }
+            }
+                //************** about info ********************
+            function aboutInfo() {
+                let btnTxt = document.getElementById("about-app");
+                if (infoCount == 0){
+                    onScreen.innerHTML = "Paula is a web-based assistant who can list and assist with various tasks on the internet. Paula will use several online libraries and resources to optimize her functionality as a web-based app.";
+                    infoCount = 1;
+                    btnTxt.innerHTML = " More About P.A.U.L.A. ";
+                }
+                else if (infoCount == 1){
+                    onScreen.innerHTML = "<p id='about2'> PAULA is a: <br/>&emsp;&emsp;&emsp;Personal <br/>&emsp;&emsp;&emsp;Application and <br/>&emsp;&emsp;&emsp;Utility for <br/>&emsp;&emsp;&emsp;Lists and <br/>&emsp;&emsp;&emsp;Appointments</p>";
+                    infoCount = 2;
+                    btnTxt.innerHTML = " Done ";
+                }
+                else {
+                    onScreen.innerHTML = "What needs to get done?";
+                    infoCount = 0;
+                    btnTxt.innerHTML = " About P.A.U.L.A. ";
+                }
+            }
+            
+            //display current list items if empty display an encouraging message
+
+            function getList() {
+                if (doList.length == 0) {
+                    onScreen.innerHTML = "We are just getting started";
+                }
+                else {
+                    let betterString = "";
+                    let dipList = [];
+                    for (let i =0; i < doList.length; i++) {
+                        dipList.push(doList[i]);
+                        dipList.push("<br/>");
+                        betterString = dipList.join(" ");
+                    }
+                    onScreen.innerHTML = betterString;
+                }
+            }
+        </script>
+    </body>
+</html>
